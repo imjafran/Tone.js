@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton.js Example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="display-4 text-center">Tone.js</h1>
+        <p class="text-center">Easy Audio Plugin for Web UI</p>
+    </header>
+    <main class="container">
+        <section class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+
+                <!-- single row -->
+                <div class="row border-bottom p-4 font-italic text-muted">
+                    <div class="col-md-4">
+                        <p>What will happend</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        Example Event
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <code>How to trigger</code>
+                    </div>
+                </div>
+                <!-- single row ends -->
+
+                <!-- single row -->
+                <div class="row border-bottom p-4">
+                    <div class="col-md-4">
+                        <p>Plays <strong>Click</strong> Tone</p>
+                    </div>
+                    <div class="col-md-4">
+                        <button data-tone="button" class="form-control btn btn-info rounded-0">Click to Play</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <code>Tone.success();</code>
+                    </div>
+                </div>
+                <!-- single row ends -->
+
+                <!-- single row -->
+                <div class="row border-bottom p-4">
+                    <div class="col-md-4">
+                        <p>Plays <strong>Keypress</strong> Tone</p>
+                    </div>
+                    <div class="col-md-4">
+                        <input data-tone="keypress" class="form-control rounded-0" placeholder="Press key to play">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <code>Tone.keypress();</code>
+                    </div>
+                </div>
+                <!-- single row ends -->
+
+            </div>
+            <div class="card-footer"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="text-center p-3 text-muted">Developed by Jafran Hasan</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="tone.js"></script>
+    <script>
+
+        $(document).on('click keydown', '[data-tone]', function (event) {
+            Tone.playfile('sounds/' + $(this).attr('data-tone') + '.mp3');
+        });
+
+        $(function () {
+            $(".card-body .row:last-child").removeClass('border-bottom');
+            Tone.play('keypress');
+        });
+
+    </script>
+</body>
+
+</html>
